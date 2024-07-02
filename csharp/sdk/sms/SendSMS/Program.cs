@@ -10,27 +10,44 @@ namespace SendSMS
             // Replace the defaults below with your Telesign authentication credentials.
             string customerId = "FFFFFFFF-EEEE-DDDD-1234-AB1234567890";
             string apiKey = "ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==";
-            
+
             // Set the default below to your test phone number. 
             // In your production code, update the phone number dynamically for each transaction.    
             string phoneNumber = "11234567890";
 
+            // If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
+            // string senderId = "11234567891";
+
             // (Optional) Pull values from environment variables instead of hardcoding them.
-            if (System.Environment.GetEnvironmentVariable("CUSTOMER_ID") != null) {
+            if (System.Environment.GetEnvironmentVariable("CUSTOMER_ID") != null)
+            {
                 customerId = System.Environment.GetEnvironmentVariable("CUSTOMER_ID");
             }
-            
-            if (System.Environment.GetEnvironmentVariable("API_KEY") != null) {
+
+            if (System.Environment.GetEnvironmentVariable("API_KEY") != null)
+            {
                 apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
             }
 
-            if (System.Environment.GetEnvironmentVariable("PHONE_NUMBER") != null) {
+            if (System.Environment.GetEnvironmentVariable("PHONE_NUMBER") != null)
+            {
                 phoneNumber = System.Environment.GetEnvironmentVariable("PHONE_NUMBER");
             }
 
-            // Set the message text and type.
+            // Set the message parameters
             string message = "Your package has shipped! Follow your delivery at https://vero-finto.com/orders/3456";
             string messageType = "ARN";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "message", message },
+                { "messageType", messageType }
+            };
+
+            // Uncomment the line below if you have a sender ID.
+            // if (System.Environment.GetEnvironmentVariable("SENDER_ID") != null) {
+            //     senderId = System.Environment.GetEnvironmentVariable("SENDER_ID");
+            //     parameters.Add("sender_id", senderId);
+            // }
 
             try
             {
@@ -38,13 +55,12 @@ namespace SendSMS
                 MessagingClient messagingClient = new MessagingClient(customerId, apiKey);
 
                 // Make the request and capture the response.
-                RestClient.TelesignResponse telesignResponse = messagingClient.Message(phoneNumber, message, messageType);
+                RestClient.TelesignResponse telesignResponse = messagingClient.Message(phoneNumber, parameters);
 
                 // Display the response in the console for debugging purposes. 
                 // In your production code, you would likely remove this.
                 Console.WriteLine("\nResponse HTTP status:\n" + telesignResponse.StatusCode);
                 Console.WriteLine("\nResponse body:\n" + telesignResponse.Body);
-
             }
             catch (Exception e)
             {
@@ -55,9 +71,6 @@ namespace SendSMS
 
             Console.WriteLine("Press any key to quit.");
             Console.ReadKey();
-
-            return;
-
         }
     }
 }

@@ -2,7 +2,6 @@ require 'telesign'
 require 'telesignenterprise'
 
 # Replace the defaults below with your Telesign authentication credentials or pull them from environment variables.
-# Replace the defaults below with your Telesign authentication credentials or pull them from environment variables.
 customer_id = ENV['CUSTOMER_ID'] || 'FFFFFFFF-EEEE-DDDD-1234-AB1234567890'
 api_key = ENV['API_KEY'] || 'ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw=='
 
@@ -13,16 +12,26 @@ phone_number = ENV['PHONE_NUMBER'] || '11234567890'
 # Generate one-time passcode (OTP).
 verify_code = Telesign::Util.random_with_n_digits(5)
 
+# Optional: Set the sender ID if available.
+# If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
+# sender_id = ENV['SENDER_ID'] || '11234567891'
+
 # Instantiate a verification client object.
 verify_client = TelesignEnterprise::VerifyClient.new(customer_id, api_key)
 
 # Make the request and capture the response.
-response = verify_client.sms(phone_number, verify_code: verify_code)
+params = {
+  verify_code: verify_code
+}
+# Uncomment the line below if you have a sender ID.
+# params[:sender_id] = sender_id if sender_id
+
+response = verify_client.sms(phone_number, params)
 
 # Display the response in the console for debugging purposes. 
 # In your production code, you would likely remove this.
-print "\nResponse HTTP status: ", response.status_code, "\n"
-print "Response body: ", response.body, "\n\n"
+puts "\nResponse HTTP status: #{response.status_code}"
+puts "Response body: #{response.body}\n\n"
 
 # Display prompt to enter asserted OTP in the console.
 # In your production code, you would instead collect the asserted OTP from the end-user.
