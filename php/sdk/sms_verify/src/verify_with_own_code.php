@@ -11,7 +11,6 @@ $api_key = getenv('API_KEY') ?? 'ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmF
 # In your production code, update the phone number dynamically for each transaction.
 $phone_number = getenv('PHONE_NUMBER') ?? '11234567890';
 
-# Optional: Set the sender ID if available.
 # If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
 # $sender_id = getenv('SENDER_ID') ?? '11234567891';
 
@@ -21,15 +20,13 @@ $verify_code = randomWithNDigits(5);
 # Instantiate a verification client object.
 $verify_client = new VerifyClient($customer_id, $api_key);
 
-# Create the parameters array and add the optional sender ID if available.
+# Create the parameters array and add parameters.
 $params = [
     "verify_code" => $verify_code
 ];
 
 # Uncomment the line below if you have a sender ID.
-# if (isset($sender_id)) {
-#     $params['sender_id'] = $sender_id;
-# }
+# $params['sender_id'] = $sender_id;
 
 # Make the request and capture the response.
 $response = $verify_client->sms($phone_number, $params);

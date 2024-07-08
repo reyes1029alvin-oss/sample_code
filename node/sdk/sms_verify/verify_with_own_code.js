@@ -12,8 +12,9 @@ const parameters = {};
 // Set the default below to your test phone number or pull it from an environment variable.
 // In your production code, update the phone number dynamically for each transaction.
 parameters["phone_number"] = process.env.PHONE_NUMBER || "11234567890";
-// If you have a valid sender ID approved by Telesign, uncomment the two lines below and replace the placeholder value in the first line.
+// If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
 // parameters["sender_id"] = "11234567891"
+
 // Generate one-time passcode (OTP) and add it to request parameters.
 const verifyCode = Math.floor(Math.random() * 99999).toString();
 parameters["verify_code"] = verifyCode;

@@ -11,7 +11,7 @@ const parameters = {};
 // Set the default below to your test phone number or pull it from an environment variable.
 // In your production code, update the phone number dynamically for each transaction.
 parameters.phoneNumber = process.env.PHONE_NUMBER || "11234567890";
-// If you have a valid sender ID approved by Telesign, uncomment the two lines below and replace the placeholder value in the first line.
+// If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
 // parameters.senderId = "11234567891"
 
 // Set the message text and type.

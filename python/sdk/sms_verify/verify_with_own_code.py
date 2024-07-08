@@ -2,6 +2,7 @@ import os
 from telesignenterprise.verify import VerifyClient
 from telesign.util import random_with_n_digits
 
+
 # Replace the defaults below with your Telesign authentication credentials or pull them from environment variables.
 customer_id = os.getenv('CUSTOMER_ID', 'FFFFFFFF-EEEE-DDDD-1234-AB1234567890')
 api_key = os.getenv('API_KEY', 'ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==')
@@ -16,7 +17,6 @@ verify_code = random_with_n_digits(5)
 # Instantiate a verification client object.
 verify = VerifyClient(customer_id, api_key)
 
-# Optional: Set the sender ID if available.
 # If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
 # sender_id = os.getenv('SENDER_ID', '11234567891')
 
@@ -30,7 +30,7 @@ params = {
 # params['sender_id'] = sender_id
 
 # Make the request and capture the response.
-response = verify.sms(params['phone_number'], verify_code=params['verify_code'])
+response = verify.sms(params['phone_number'], params)
 
 # Display the response in the console for debugging purposes. 
 # In your production code, you would likely remove this.

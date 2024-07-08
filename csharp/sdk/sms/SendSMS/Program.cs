@@ -37,17 +37,16 @@ namespace SendSMS
             // Set the message parameters
             string message = "Your package has shipped! Follow your delivery at https://vero-finto.com/orders/3456";
             string messageType = "ARN";
-            Dictionary<string, object> parameters = new Dictionary<string, object>
-            {
-                { "message", message },
-                { "messageType", messageType }
-            };
+            Dictionary<string, object> parameters = new Dictionary<string, object> { };
 
-            // Uncomment the line below if you have a sender ID.
-            // if (System.Environment.GetEnvironmentVariable("SENDER_ID") != null) {
-            //     senderId = System.Environment.GetEnvironmentVariable("SENDER_ID");
-            //     parameters.Add("sender_id", senderId);
-            // }
+            // Uncomment the block below if you have a sender ID.
+            /*
+            if (System.Environment.GetEnvironmentVariable("SENDER_ID") != null) {
+                senderId = System.Environment.GetEnvironmentVariable("SENDER_ID");
+                parameters.Add("sender_id", senderId);
+            }
+            */
+
 
             try
             {
@@ -55,7 +54,7 @@ namespace SendSMS
                 MessagingClient messagingClient = new MessagingClient(customerId, apiKey);
 
                 // Make the request and capture the response.
-                RestClient.TelesignResponse telesignResponse = messagingClient.Message(phoneNumber, parameters);
+                RestClient.TelesignResponse telesignResponse = messagingClient.Message(phoneNumber, message, messageType, parameters);
 
                 // Display the response in the console for debugging purposes. 
                 // In your production code, you would likely remove this.
@@ -71,6 +70,8 @@ namespace SendSMS
 
             Console.WriteLine("Press any key to quit.");
             Console.ReadKey();
+
+            return;
         }
     }
 }

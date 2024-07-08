@@ -12,7 +12,6 @@ phone_number = ENV['PHONE_NUMBER'] || '11234567890'
 message = 'Your package has shipped! Follow your delivery at https://vero-finto.com/orders/3456'
 message_type = 'ARN'
 
-# Optional: Set the sender ID if available.
 # If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
 # sender_id = ENV['SENDER_ID'] || '11234567891'
 
