@@ -15,13 +15,12 @@ message_type = 'ARN'
 # Instantiate a messaging client object.
 client = Telesign::MessagingClient.new(customer_id, api_key)
 
+params = {}
 # Uncomment the lines below if you have a sender ID.
-# params = {}
-# params[:sender_id] = ENV['SENDER_ID'] || '11234567891'
-
+sender_id = ENV['SENDER_ID'] || '11234567891'
 
 # Make the request and capture the response.
-response = client.message(phone_number, message, messageType, params)
+response = client.message(phone_number, message, message_type, sender_id)
 
 # Display the response in the console for debugging purposes. 
 # In your production code, you would likely remove this.
