@@ -31,7 +31,7 @@ params = {
 # params['sender_id'] = sender_id
 
 if 'sender_id' in params:
-    response = messaging.message(params['phone_number'], params['message'], params['message_type'], sender_id=params['sender_id'])
+    response = messaging.message(params['phone_number'], params['message'], params['message_type'], **{"sender_id": params['sender_id']})
 else:
     response = messaging.message(params['phone_number'], params['message'], params['message_type'])
 
