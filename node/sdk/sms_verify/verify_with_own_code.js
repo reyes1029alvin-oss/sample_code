@@ -27,8 +27,6 @@ function smsVerifyCallback(error, responseBody) {
   // Display the response body in the console for debugging purposes.
   // In your production code, you would likely remove this.
   if (error === null) {
-    // Display the response body in the console for debugging purposes.
-    // In your production code, you would likely remove this.
     console.log("\nResponse body:\n" + JSON.stringify(responseBody));
   } else {
     console.error("Unable to send message. " + error);
