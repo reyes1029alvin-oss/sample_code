@@ -37,7 +37,7 @@ namespace SendSMS
             // Set the message parameters
             string message = "Your package has shipped! Follow your delivery at https://vero-finto.com/orders/3456";
             string messageType = "ARN";
-            Dictionary<string, object> parameters = new Dictionary<string, object> { };
+            Dictionary<string, string> parameters = new Dictionary<string, string> { };
 
             // Uncomment the block below if you have a sender ID.
             /*
