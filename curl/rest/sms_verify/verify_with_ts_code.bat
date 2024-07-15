@@ -3,5 +3,5 @@ curl -u "$CUSTOMER_ID":"$API_KEY" \
      --header 'accept: application/x-www-form-urlencoded' \
      --header 'content-type: application/x-www-form-urlencoded' \
      --data phone_number="$PHONE_NUMBER" \
-     # --data phone_number="$SENDER_ID" \
+     # --data sender_id="$SENDER_ID" \
      # If you have a valid sender ID approved by Telesign, uncomment the line above.
