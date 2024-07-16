@@ -13,7 +13,7 @@ const parameters = {};
 // In your production code, update the phone number dynamically for each transaction.
 parameters["phone_number"] = process.env.PHONE_NUMBER || "11234567890";
 // If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
-// parameters["sender_id"] = "11234567891"
+// parameters["senderId"] = process.env.SENDER_ID || "11234567891";
 
 // Generate one-time passcode (OTP) and add it to request parameters.
 const verifyCode = Math.floor(Math.random() * 99999).toString();
