@@ -1,6 +1,5 @@
-const TelesignSDK = require("telesignenterprisesdk");
+const TelesignSDK = require("./node_telesign_enterprise");
 
-// Replace the defaults below with your Telesign authentication credentials or pull them from environment variables.
 // Replace the defaults below with your Telesign authentication credentials or pull them from environment variables.
 const customerId =
   process.env.CUSTOMER_ID || "FFFFFFFF-EEEE-DDDD-1234-AB1234567890";
@@ -11,7 +10,7 @@ const parameters = {};
 
 // Set the default below to your test phone number or pull it from an environment variable.
 // In your production code, update the phone number dynamically for each transaction.
-parameters["phone_number"] = process.env.PHONE_NUMBER || "11234567890";
+const phoneNumber = process.env.PHONE_NUMBER || "11234567890";
 // If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
 // parameters["senderId"] = process.env.SENDER_ID || "11234567891";
 
@@ -58,4 +57,4 @@ function verify(input) {
 }
 
 // Make the request and capture the response.
-client.verify.sms(smsVerifyCallback, parameters);
+client.verify.sms(smsVerifyCallback, phoneNumber, parameters);

@@ -11,8 +11,8 @@ public class App {
         String phoneNumber = System.getenv().getOrDefault("PHONE_NUMBER", "11234567890");
         String bodyParams = String.format("is_primary=true&phone_number=%s", phoneNumber)
         // If you have a valid sender ID approved by Telesign, uncomment the two lines below and replace the placeholder value in the first line.
-        // senderId = "11234567891"
-        // String bodyParams = bodyParams + String.format("&sender_id=%s", senderId)
+        //String senderId = System.getenv().getOrDefault("SENDER_ID", "11234567891");
+        //bodyParams = bodyParams + String.format("&sender_id=%s", senderId);
 
 
 		AsyncHttpClient client = new DefaultAsyncHttpClient();
