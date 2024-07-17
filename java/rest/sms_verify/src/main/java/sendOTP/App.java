@@ -9,7 +9,7 @@ public class App {
 		String customerId = System.getenv().getOrDefault("CUSTOMER_ID", "ABC1DE23-A12B-1234-56AB-AB1234567890");
         String apiKey = System.getenv().getOrDefault("API_KEY", "ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==");
         String phoneNumber = System.getenv().getOrDefault("PHONE_NUMBER", "11234567890");
-        String bodyParams = String.format("is_primary=true&phone_number=%s", phoneNumber)
+        String bodyParams = String.format("is_primary=true&phone_number=%s", phoneNumber);
         // If you have a valid sender ID approved by Telesign, uncomment the two lines below and replace the placeholder value in the first line.
         //String senderId = System.getenv().getOrDefault("SENDER_ID", "11234567891");
         //bodyParams = bodyParams + String.format("&sender_id=%s", senderId);

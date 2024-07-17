@@ -16,8 +16,18 @@ namespace SendOTP
             // Set the default below to your test phone number. 
             // In your production code, update the phone number dynamically for each transaction.                
             string phoneNumber = "11234567890";
-            // If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
-            // string senderId = "11234567891";
+            // If you have a valid sender ID approved by Telesign, uncomment the block below and replace the placeholder value, or use a value from an environment variable.
+            /*
+            string senderId = "";
+            if (System.Environment.GetEnvironmentVariable("SENDER_ID") != null)
+            {
+                senderId = System.Environment.GetEnvironmentVariable("SENDER_ID");
+            } 
+            else
+            {
+                senderId = "11234567891";
+            }
+            */
 
             // (Optional) Pull values from environment variables instead of hardcoding them.
             if (System.Environment.GetEnvironmentVariable("CUSTOMER_ID") != null)

@@ -22,7 +22,6 @@ verify = VerifyClient(customer_id, api_key)
 
 # Create the parameters dictionary.
 params = {
-    'phone_number': phone_number,
     'verify_code': verify_code
 }
 
@@ -30,7 +29,7 @@ params = {
 # params['sender_id'] = sender_id
 
 # Make the request and capture the response.
-response = verify.sms(params['phone_number'], params)
+response = verify.sms(phone_number, **params)
 
 # Display the response in the console for debugging purposes. 
 # In your production code, you would likely remove this.

@@ -25,7 +25,7 @@ params = {
 # Uncomment the line below if you have a sender ID.
 # params[:sender_id] = sender_id if sender_id
 
-response = verify_client.sms(phone_number, params)
+response = verify_client.sms(phone_number, **params)
 
 # Display the response in the console for debugging purposes. 
 # In your production code, you would likely remove this.

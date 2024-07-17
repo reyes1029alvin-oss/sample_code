@@ -1,4 +1,4 @@
-const TelesignSDK = require("./node_telesign_enterprise");
+const TelesignSDK = require("telesignenterprisesdk");
 
 // Replace the defaults below with your Telesign authentication credentials or pull them from environment variables.
 const customerId =
