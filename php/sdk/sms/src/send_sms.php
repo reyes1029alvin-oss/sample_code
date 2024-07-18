@@ -14,11 +14,23 @@ $phone_number = getenv('PHONE_NUMBER') ?? '11234567890';
 $message = "Your package has shipped! Follow your delivery at https://vero-finto.com/orders/3456";
 $message_type = "ARN";
 
+# If you have a valid sender ID approved by Telesign, uncomment the line below and replace the placeholder value.
+# $sender_id = getenv('SENDER_ID') ?? '11234567891';
+
 # Instantiate a messaging client object.
 $messaging = new MessagingClient($customer_id, $api_key);
 
+# Create the parameters array and add parameters.
+$params = [
+    'message' => $message,
+    'message_type' => $message_type
+];
+
+# Uncomment the line below if you have a sender ID.
+# $params['sender_id'] = $sender_id;
+
 # Make the request and capture the response.
-$response = $messaging->message($phone_number, $message, $message_type);
+$response = $messaging->message($phone_number, $message, $message_type, $params);
 
 # Display the response body in the console for debugging purposes. 
 # In your production code, you would likely remove this.

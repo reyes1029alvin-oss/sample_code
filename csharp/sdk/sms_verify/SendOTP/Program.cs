@@ -12,21 +12,30 @@ namespace SendOTP
             // Replace the defaults below with your Telesign authentication credentials.
             string customerId = "FFFFFFFF-EEEE-DDDD-1234-AB1234567890";
             string apiKey = "ABC12345yusumoN6BYsBVkh+yRJ5czgsnCehZaOYldPJdmFh6NeX8kunZ2zU1YWaUw/0wV6xfw==";
-            
+
             // Set the default below to your test phone number. 
             // In your production code, update the phone number dynamically for each transaction.                
             string phoneNumber = "11234567890";
-
+            
             // (Optional) Pull values from environment variables instead of hardcoding them.
-            if (System.Environment.GetEnvironmentVariable("CUSTOMER_ID") != null) {
+            // If you have a valid sender ID approved by Telesign, uncomment the block below and replace the placeholder value, or use a value from an environment variable.
+            /*
+            string senderId = "11234567891";
+            if (System.Environment.GetEnvironmentVariable("SENDER_ID") != null)
+            {
+                senderId = System.Environment.GetEnvironmentVariable("SENDER_ID");
+            } 
+            */
+            if (System.Environment.GetEnvironmentVariable("CUSTOMER_ID") != null)
+            {
                 customerId = System.Environment.GetEnvironmentVariable("CUSTOMER_ID");
             }
-            
-            if (System.Environment.GetEnvironmentVariable("API_KEY") != null) {
+            if (System.Environment.GetEnvironmentVariable("API_KEY") != null)
+            {
                 apiKey = System.Environment.GetEnvironmentVariable("API_KEY");
             }
-
-            if (System.Environment.GetEnvironmentVariable("PHONE_NUMBER") != null) {
+            if (System.Environment.GetEnvironmentVariable("PHONE_NUMBER") != null)
+            {
                 phoneNumber = System.Environment.GetEnvironmentVariable("PHONE_NUMBER");
             }
 
@@ -34,8 +43,13 @@ namespace SendOTP
             Random random = new Random();
             int num = random.Next(100000);
             string verifyCode = num.ToString();
-            Dictionary<string, string> parameters = new Dictionary<string, string>();
-            parameters.Add("verify_code", verifyCode);
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>{
+                { "verify_code", verifyCode }
+            };
+
+            // Uncomment the line below if you have a sender ID.
+            // parameters.Add("sender_id", senderId);
 
             try
             {
